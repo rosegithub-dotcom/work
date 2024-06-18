@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #04A1BF;
+            color: #FFCD5D;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        h1 {
+            color: #FFCD5D;
+        }
+
+        .todo-container {
+            margin-top: 20px;
+        }
+
+        .todo-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #025F70;
+            color: #FFCD5D;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+        }
+
+        .delete-btn {
+            background-color: #025F70;
+            color: #FFCD5D;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Todo List</h1>
+
+    <div class="todo-container">
+        <input type="text" id="todoInput" placeholder="Add a new todo">
+        <button onclick="addTodo()">Add</button>
+    </div>
+
+    <div id="todoList" class="todo-container">
+        <!-- Todo items will be displayed here -->
+    </div>
+
+    <script>
+        // Sample todo list data
+        let todos = [];
+
+        // Function to add a new todo
+        function addTodo() {
+            const todoInput = document.getElementById('todoInput');
+            const todoText = todoInput.value.trim();
+
+            if (todoText !== '') {
+                todos.push(todoText);
+                displayTodos();
+                todoInput.value = '';
+            }
+        }
+
+        // Function to display all todos
+        function displayTodos() {
+            const todoList = document.getElementById('todoList');
+            todoList.innerHTML = '';
+
+            todos.forEach((todo, index) => {
+                const todoDiv = document.createElement('div');
+                todoDiv.className = 'todo-item';
+                todoDiv.innerHTML = `
+                    <span>${todo}</span>
+                    <button class="delete-btn" onclick="deleteTodo(${index})">X</button>
+                `;
+                todoList.appendChild(todoDiv);
+            });
+        }
+
+        // Function to delete a todo
+        function deleteTodo(index) {
+            todos.splice(index, 1);
+            displayTodos();
+        }
+
+        // Initial display of todos
+        displayTodos();
+    </script>
+</body>
+</html>

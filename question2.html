@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM method</title>
+</head>
+<body>
+<h2>javaScript HTML DOM</h2>
+<P id="intro">Finding HTML Elements by id</P>
+<p>This example demostrates the <b>getElementsById</b>method</p>
+<p id="demo"></p>
+<div id="demo"></div>
+
+<script>
+    // Select the element by its id
+    var demoElement = document.getElementById("demo");
+
+    // Create a text node
+    var textNode = document.createTextNode("This is a demo text");
+
+    // Append the text node to the demo element
+    demoElement.appendChild(textNode);
+</script>
+
+</body>
+</html>
